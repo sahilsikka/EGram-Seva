@@ -1,0 +1,910 @@
+-- phpMyAdmin SQL Dump
+-- version 3.5.1
+-- http://www.phpmyadmin.net
+--
+-- Host: localhost
+-- Generation Time: Apr 09, 2013 at 10:52 PM
+-- Server version: 5.5.24-log
+-- PHP Version: 5.4.3
+
+SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8 */;
+
+--
+-- Database: `test`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `crops`
+--
+
+CREATE TABLE IF NOT EXISTS `crops` (
+  `name` varchar(200) COLLATE utf8_unicode_ci NOT NULL,
+  `reg_code` varchar(10) COLLATE utf8_unicode_ci NOT NULL,
+  `time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `crops`
+--
+
+INSERT INTO `crops` (`name`, `reg_code`, `time`) VALUES
+('हरा धनियां-2500, गाजर-1500, प्याज-1050, आलू-1200, बैंगन-1200, हरी अदरक-6500, फ्रेंच बिन्स-6500, हरी मिर्च-1700, लौकी-1200, हाथी रतालू-1100, टमाटर-600, चूने-4500, करेला-2800,\n', '1', '2013-04-09 12:03:13'),
+('बृहस्पतिवार-साफ. उच्च: 37C. पवन वेग: 10-20 किमी/घंटा. पवन दिशा: प.उ.प..', '2', '2013-04-09 22:16:40');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `disease`
+--
+
+CREATE TABLE IF NOT EXISTS `disease` (
+  `id` varchar(3) COLLATE utf8_unicode_ci NOT NULL,
+  `name` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
+  `symptoms` varchar(1000) COLLATE utf8_unicode_ci NOT NULL,
+  `cure` varchar(1000) COLLATE utf8_unicode_ci NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `disease`
+--
+
+INSERT INTO `disease` (`id`, `name`, `symptoms`, `cure`) VALUES
+('1', 'मलेरिया', 'सभी मलेरिया रोग से आम की प्रारंभिक अभिव्यक्तियों फ्लू जैसे लक्षणों के समान हैं, और इस तरह के सेप्टीसीमिया, आंत्रशोथ के रूप में अन्य शर्तों के समान कर सकते हैं, और वायरल diseases.It सिर दर्द, बुखार, कंपकंपी, जोड़ों का दर्द (जोड़ों का दर्द), उल्टी, शामिल हो सकते हैं एनीमिया, पीलिया, रक्तकणरंजकद्रव्यमेह, रेटिनल क्षति, और आक्षेप.', 'पी. फाल्सीपेरम संक्रमण के लिए सबसे प्रभावी रणनीति किसी एक दवा घटक के लिए प्रतिरोध विकसित करने के लिए परजीवी की क्षमता को कम कर देता है जो अन्य antimalarials (आर्टीमिसिनिन संयोजन चिकित्सा, या अधिनियम के रूप में जाना जाता है), के साथ संयोजन में artemisinins का इस्तेमाल होता है. ये अतिरिक्त antimalarials अमोडिअक्विन, lumefantrine, मेफ़्लोक़्विन या sulfadoxine / पैरिमीथामाइन शामिल'),
+('10', 'अवसाद', 'अवसाद के लक्षण बहुत ज्यादा सो, बेचैन, लग रहा है कि आप आनंद चीजों में रुचि खोने या सोने के लिए सक्षम नहीं हैं, हर समय या कमी ऊर्जा थकान महसूस हो, लाभ या वजन कम और भूख खाते हैं या कम करना चाहते हैं नहीं कर रहे हैं', 'बेहतर महसूस करने के लिए पहला कदम है कि आप मदद कर सकते हैं, जो किसी से बात कर रहा है. यह एक चिकित्सक या एक परामर्शदाता हो सकता है. आपकी केयर मेडिसिन शामिल हो सकते हैं और परामर्श. एक स्वस्थ आहार खाने और जंक फूड से बचें.'),
+('11', 'दस्त', 'दस्त के साथ, आप अक्सर मल त्याग दिया है या आप ढीला तरल मल है. दस्त सबसे अधिक बार 2 से 3 दिनों तक चलेगा. आपके दस्त 3 दिनों में बेहतर नहीं मिलता है, तो अपने डॉक्टर से मिलते हैं.', 'दस्त के इलाज के दूध और डेयरी उत्पादों से परहेज कर रहे हैं जब तक आपके दस्त पानी की कम से कम 8 गिलास एक दिन पीने, छोटे भोजन खाने के दिन के दौरान हर 2 से 3 घंटे के लिए बंद कर दिया है.'),
+('12', 'दिल का दौरा', 'हार्ट अटैक के लक्षण हाथ दर्द, दबाव, जकड़न, भारीपन, निचोड़ या अपने सीने में जलन, हाथ, जबड़े, कंधे या गर्दन हैं.', 'तुरंत डॉक्टर के पास जाओ'),
+('13', 'स्ट्रोक', 'सन्न, झुनझुनी या कमजोरी चेहरे, हाथ या पैर, अक्सर केवल एक पक्ष के शरीर, भ्रम या परेशानी समझ समस्याओं, समस्याओं के एक या दोनों आँखों से देखकर बोल में स्ट्रोक के लक्षण हैं।', 'उच्च रक्तचाप, मधुमेह, उच्च कोलेस्ट्रॉल और हृदय रोग का इलाज यदि वर्तमान और छोड़ धूम्रपान'),
+('14', 'क्षय रोग', 'खाँसी 3 सप्ताह से अधिक, बुखार, वजन घटाने या भूख न लगना, लग रहा है कमजोर और थक गया, सीने में दर्द रहता है', 'जब आप खांसी, छींक या हँसते अपने मुँह को कवर किया। फिर, अपने हाथ धो लो। हमेशा से पहले और भोजन आपके शरीर मजबूत रखने, 3 भोजन खाने और द्रव के 6 से 8 गिलास एक दिन पीने और सभी डॉक्टर नियुक्तियों के लिए जाने के लिए, के बाद अपने हाथ धो लो।'),
+('15', 'घाव', 'गर्मी, सूजन, लाली या परिवर्तन जैसे संक्रमण के कोई लक्षण या जल निकासी में वृद्धि।', 'यदि आप स्नान करने की अनुमति है, चलो पानी अपने घाव पर चलाएँ। करते हैं सीधे चीरा मारा स्प्रे नहीं चलो। घाव शु ᭬ क रख। बाँधने के लागू होते हैं।'),
+('2', 'दमा', 'अस्थमा घरघराहट, सांस की तकलीफ, सीने में जकड़न, और खाँसी की आवर्तक एपिसोड के द्वारा होती है.', 'अस्थमा के लिए सबसे प्रभावी उपचार सिगरेट का धुआँ, पालतू जानवर, या एस्पिरिन, और उन्हें नष्ट करने के जोखिम के रूप में चलाता है, पहचान है.'),
+('3', 'हैजा', 'हैजा का प्राथमिक लक्षण साफ तरल पदार्थ का विपुल, दर्दरहित दस्त और उल्टी कर रहे हैं. ये लक्षण आमतौर पर एक से पाँच दिनों बैक्टीरिया की घूस के बाद, अचानक शुरू.', 'ज्यादातर मामलों में, हैजा सफलतापूर्वक प्रशासन के लिए अत्यधिक प्रभावी, सुरक्षित, और आसान है, जो मौखिक पुनर्जलीकरण चिकित्सा (ORT), के साथ इलाज किया जा सकता है.'),
+('4', 'ब्रोंकाइटिस', 'ब्रोंकाइटिस के लक्षण लगातार खांसी, थक गया, खाँसी या गहरी सांस लेने और सांस की शोर साँस लेने में तकलीफ के साथ सीने में दर्द महसूस कर रहे हैं', 'ब्रोंकाइटिस के कुछ इलाज सर्दी और फ्लू से बचने, बलगम पतली रखने के लिए तरल पदार्थ की एक बहुत पीने और एक humidifier या vaporizer का उपयोग भी शामिल है'),
+('5', 'एलर्जी', 'एलर्जी के लक्षण खुजली, बहती या भरी हुई नाक, साइनस दबाव, छींकने, खुजली, लाल, सूजन जल और पानी आँखें हैं', 'एलर्जी के इलाज के लिए अपने चिकित्सक से संपर्क अगर आप संकेत हैं कि बदतर हो या आप अपनी सामान्य गतिविधियों करने से रहते हैं या 101 डिग्री फेरनहाइट या 38 डिग्री सेल्सियस से अधिक बुखार है'),
+('6', 'गठिया', 'गठिया के लक्षण जोड़ों का दर्द हैं रहे हैं और ऐसा लगता है जैसे यह आप का समर्थन नहीं करेंगे. यह मायनों में इजाफा या पहुँच जाती है और अक्सर सुबह में कठोरता', 'गठिया के इलाज के दर्द और सूजन को नियंत्रित करने और पदों पर या अपने दर्दनाक जोड़ों पर अतिरिक्त दबाव डाल कि आंदोलनों से बचने के लिए गर्म या ठंडे उपचार का उपयोग भी शामिल है.'),
+('7', 'बर्न्स', 'जलने के लक्षण हैं अगर त्वचा का रंग बदलने और जलन का अनुभव शुरू होता है.', 'जलता का इलाज अपने दिल का स्तर ऊपर उठाया जल क्षेत्र रखना शामिल है, पट्टियाँ साफ और सूखी और प्रत्येक दिन पट्टियाँ बदल जाते हैं.'),
+('8', ' कोलेस्ट्रॉल', 'आप उच्च रक्त कोलेस्ट्रॉल के लिए जोखिम में हैं अगर आप संतृप्त वसा और कोलेस्ट्रॉल में उच्च खाना खाने और आप मधुमेह है, कम थायराइड स्तर हाइपोथायरायडिज्म, या गुर्दे की बीमारी कहा जाता है', 'व्यायाम किया जाता और साबुत अनाज, सेम, और ताजे फल और सब्जियों जैसे उच्च फाइबर भोजन के बहुत खाना चाहिए.'),
+('9', 'कब्ज', 'कब्ज के लक्षण, तनाव आप पूरी तरह से अपनी आंत खाली नहीं था की तरह लग रहा है और ऐंठन, दर्द, सूजन या मितली की आवश्यकता है कर रहे हैं.', 'कब्ज के इलाज के लिए तरल पदार्थ के कम से कम 8 से 10 कप एक दिन पीने शामिल है, गर्म या गर्म पेय आपकी आंत और अधिक आसानी से ले जाने में मदद कर सकते हैं. ऐसे चोकर अनाज, साबुत अनाज ब्रेड, कच्ची सब्जियों, ताजा या सूखे फल, मेवा और पॉपकॉर्न के रूप में उच्च फाइबर खाद्य पदार्थों का सेवन करें.');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `ex`
+--
+
+CREATE TABLE IF NOT EXISTS `ex` (
+  `ex ID` char(36) COLLATE utf8_unicode_ci NOT NULL,
+  `segment` int(11) DEFAULT NULL,
+  `seeds` text COLLATE utf8_unicode_ci,
+  `price` text COLLATE utf8_unicode_ci,
+  `New` text COLLATE utf8_unicode_ci,
+  `new1` text COLLATE utf8_unicode_ci,
+  PRIMARY KEY (`ex ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `ex`
+--
+
+INSERT INTO `ex` (`ex ID`, `segment`, `seeds`, `price`, `New`, `new1`) VALUES
+('00bbd1f6-a277-4504-902e-4bc5eb4b0ded', 0, 'Dipped Peas', '', '', ''),
+('01694a05-58b9-4e09-b7a6-6dbb6bb877b3', 0, 'Sunflower', '', '', ''),
+('03e88953-6061-45ba-8123-ff36ba4f7621', 0, 'Linseed', '', '', ''),
+('04247fd2-e2e1-4f28-a5d1-9f6f4e0431a5', 0, 'Kolahcassia', '', '', ''),
+('04700ed4-b720-47d7-a92e-2e889ebdade2', 0, 'Fenugreek seeds', '', '', ''),
+('053e90f5-8c06-42e0-8592-fc159c46b230', 0, 'Cauliflower', '2600', '', ''),
+('07d7e493-4f78-427b-b43c-0d8649289a1b', 0, 'Banana', '', '', ''),
+('0addcf34-cb41-4b78-8e93-feb569ccbd47', 0, 'Anukaila Pumpkin (Paraal)', '', '', ''),
+('0ec8ef34-c220-4dfc-ab67-46e124135413', 0, 'Garlic', '2500', '', ''),
+('11181aaf-3598-405e-8dad-d63f9a1f0f88', 0, 'Chichinda', '', '', ''),
+('11d6632a-0015-410c-bb17-849fbb5acde9', 0, 'Corn', '', '', '1430'),
+('12dbee60-a63c-487c-b6ed-0640f7245851', 0, 'Tur dal', '', '', ''),
+('15935f18-6c15-47d4-8121-3d8ba77546fe', 0, 'Large gram', '', '', ''),
+('160d100c-49a5-405b-b82d-b58c76de080d', 0, 'Spinach', '', '', ''),
+('178e1f8d-9bc4-4fe0-ab82-625682da0ec2', 0, 'Betel', '', '', ''),
+('19cd4a4c-16ef-4e10-806e-910deeb53abf', 0, 'Daalda', '', '', ''),
+('1f34fa50-93d5-4b69-a6ab-c5e8bbd3d6c2', 0, 'Sugar', '', '', ''),
+('2002789e-43c8-47be-a2c1-2f042a9bbc0e', 0, 'Millet', '', '', '1550'),
+('25490cbf-b0b9-4cb3-a6f7-dc6ed6f68959', 0, 'Coconut', '', '', ''),
+('26f6fcde-8796-4ba1-b52d-c41c3f6dbce5', 0, 'Beets', '', '', ''),
+('28620827-49a2-4fcd-ab2c-5fc06b7e35f0', 0, 'Carrots', '1570', '', ''),
+('28e0d4d8-40d7-4df7-867e-318c3d9ad9c4', 0, 'Fish', '', '', ''),
+('292eae6b-8c3d-4eb0-95b9-51e0650ccad5', 0, 'Gourd', '1200', '', ''),
+('2961b17d-643f-4fe6-b11b-ebaf13df28e9', 0, 'Kamahda (pumpkin slippers)', '', '', ''),
+('29bba829-764d-462a-9018-f9d5722422c3', 0, 'Pineapple', '', '', ''),
+('2f603e5b-f116-4f17-9ccd-671158583ca0', 0, 'Coriander Seeds', '', '', ''),
+('32704ecc-8c71-4ce1-b148-dc890005b75f', 0, 'Sunflower seed', '', '', ''),
+('32acdfcd-ce59-42da-a5a8-1b07afd7039a', 0, 'TV Kaambu', '', '', ''),
+('3357f6ba-9b71-43e8-8fb7-802f858d0163', 0, 'Custard apple', '', '', ''),
+('3425c67d-8594-4d0b-8285-72324288bbcd', 0, 'Mango', '2400', '', ''),
+('366a27e8-901b-42e7-8edb-e530cd7767e6', 0, 'Tide', '', '', '1350'),
+('36e92cce-bc99-49de-9102-4abd72036201', 0, 'Elephant Yam', '1100', '', ''),
+('3766c41e-144a-43a5-a4e0-2aa5542b4048', 0, 'Kalthy', '', '', ''),
+('382338d3-ffb8-4515-abd2-dd1b33e1a89c', 0, 'Pepper Hill', '', '', ''),
+('3a883f38-f8d8-457d-9750-1a92e63b74c0', 0, 'Barley', '', '', '1225'),
+('3c10dbad-8b36-4d39-8287-61a279ea8377', 0, 'Maataraflly', '', '', ''),
+('3da874c7-eee7-467b-ae35-c00defbbf883', 0, 'Lentil dal', '', '', ''),
+('425049e2-b94e-426b-b1fe-8326039ef06f', 0, 'Jute', '', '', ''),
+('44144388-4574-4cc3-88e6-004781286e02', 0, 'Urd', '', '', '3300'),
+('4497b97f-5793-4f1e-afcf-a1e519ab02e5', 0, 'Jack', '', '', ''),
+('4a7d972c-9363-461f-a88a-5588d4a6b827', 0, 'French bins', '6500', '', ''),
+('4b85f36f-f77d-4ecb-b085-765ceb94a828', 0, 'Bengal gram', '', '', '3250'),
+('4ca7b4d6-25f2-47fd-9d9e-1eb63c763c2b', 0, 'Indian bins (seam)', '', '', ''),
+('4f20e589-93b2-4434-94f1-4d2a312db147', 0, 'Coriander', '2500', '', ''),
+('54f244a4-0fa9-47c6-89b4-80f342745884', 0, 'Bengal gram dal', '', '', ''),
+('5688b438-a937-4076-beac-14fc03353754', 0, 'Wheat flour', '', '', ''),
+('5733fafd-c231-47a3-aa0c-ab7f39f5e163', 0, 'Onion', '1050', '', ''),
+('5884e0bb-0117-46a6-bd56-37624a7388e7', 0, 'Tinda', '', '', ''),
+('59716a17-98d9-4fed-b73d-4713588f6a2d', 0, 'Cock', '', '', ''),
+('5f1d953e-dc2b-4a01-a6b9-3aa7f41eef54', 0, 'Papaya (raw)', '', '', ''),
+('620e49dd-b8d4-4739-9f58-6bdaf6562fc3', 0, 'Other fruits', '', '', ''),
+('64efe5a4-1579-40ae-bbd3-17d65e1a3f03', 0, 'Pomegranate', '', '', ''),
+('64f61f9a-c147-4da4-9f1c-9a26dc3a1555', 0, 'Wheat', '', '', '1600'),
+('651402e8-d872-403f-a7f8-5eab41d0fdd5', 0, 'Little Ghoad (Kundru)', '3000', '', ''),
+('68491c2c-8d0c-4adc-8788-19445bc1bc11', 0, 'Alobiamlan (Shanl)', '', '', ''),
+('68aa2c8c-f7b5-4250-b08a-28bec2a48e6a', 0, 'Lentil', '', '', ''),
+('6b502760-a89c-465c-9ee4-4083ab929b68', 0, 'Bitter gourd', '2800', '', ''),
+('6f40bf3e-32c1-4a58-b225-47f7143b7338', 0, 'Apple', '', '', ''),
+('728fc2d4-cc9a-4e78-9ee9-4d5edb1a31c0', 0, 'Lime', '4500', '', ''),
+('7290b1a5-b13e-4894-bb02-e2846f3d8977', 0, 'Black Zucchini', '', '', ''),
+('7299d3fc-c4d3-446d-a7fe-ac597e218ca1', 0, 'Alobiamlan', '', '', ''),
+('7ce5846e-796e-4634-93a8-8317e222c119', 0, 'Green ginger', '6500', '', ''),
+('7e41b8f6-824a-4c4f-88bd-c09efc2a3162', 0, 'Cayenne pepper', '', '', ''),
+('83680105-00d2-458a-911b-e3fd47c408de', 0, 'Cucumber', '1200', '', ''),
+('84e45a1e-ea2c-4e80-9df8-5de55f0bc363', 0, 'Molasses (Jagre)', '', '', ''),
+('89d9d7f3-ca3a-4af0-8472-0892f53f7588', 0, 'Peas (dry)', '', '', ''),
+('8d49ad43-ec82-400e-bf6f-b467805d4a8a', 0, 'Other Vegetables', '', '', ''),
+('91878048-0480-4fd1-9bca-5791fb60fb46', 0, 'Kashi fruit', '', '', ''),
+('92969e89-f3dd-4203-a281-4d315aa7cf67', 0, 'Tobacco', '', '', ''),
+('964adb8f-88aa-477c-aa80-e55ef6245257', 0, 'Arhar (tur)', '', '', '4085'),
+('97d6d1da-0e98-459f-a2d8-b8dc12841b96', 0, 'Toria', '3000', '', ''),
+('99fe38c6-facf-423b-b869-f53892c87d63', 0, 'Leafy Sbgiyug', '', '', ''),
+('9a4247a0-510d-42f3-875a-aa998c54e466', 0, 'Radish', '', '', ''),
+('9f248d67-c081-4007-8b7a-b2dd325b1613', 0, 'Guchchith Beans', '', '', ''),
+('a30bc4e0-2cfd-445f-95cc-944ec15b45c4', 0, 'Arnde seed', '', '', '3250'),
+('a4410f61-5823-4f83-abee-6cfdc7535cb3', 0, 'Plum', '', '', ''),
+('a6bfef38-97aa-4aed-a29a-84a6cdbe3678', 0, 'Coconut Seed', '', '', ''),
+('a6d453e1-b9bf-4def-b436-bfd474d7e27a', 0, 'Lemon', '', '', ''),
+('a719fee3-9b21-4257-a4eb-bc3239f74bbf', 0, 'Cotton', '', '5235', ''),
+('aa03d582-38c3-48df-a2c9-f0d62d94dff6', 0, 'Okra', '3500', '', ''),
+('aeb00658-ed11-4132-b3d0-e36dde54635e', 0, 'Common (raw)', '', '', ''),
+('af140712-2bab-4013-acae-170369893242', 0, 'Jingelly', '', '', ''),
+('afc9dd01-24ae-4343-a0af-667a66090f30', 0, 'Bean', '', '', ''),
+('b48cc597-3eb3-4130-9792-bc69c2fa6a99', 0, 'Neul shell', '', '', ''),
+('b52a2ab2-dacc-4110-807f-29b8b60f6d65', 0, 'Chikaw (Sspot)', '', '', ''),
+('b7599467-27ea-4c4b-9373-17644da49d9b', 0, 'Ghee', '', '', ''),
+('b99fff87-d914-4eb0-acf0-0c109dadf6f0', 0, 'Ragi', '', '', ''),
+('bc574110-741d-4c33-b408-a9af8ad1469d', 0, 'Green Peas', '', '', '2300'),
+('bd08b12c-6999-48d1-9b43-cb1b603c9f5c', 0, 'Shakrknd', '', '', ''),
+('bdf6d6b8-317e-4f47-998a-e8252f9f860f', 0, 'Soybean', '', '', '3600'),
+('be19735c-7f97-46a6-a1c9-73e1bd0d4769', 0, 'Ginger', '', '', ''),
+('be601f05-3b87-4499-bc03-2ffe5abcbc44', 0, 'Guava', '', '', ''),
+('bf9c280f-39db-499a-960c-444694ae6bdf', 0, 'Bins', '', '', ''),
+('bfbd0125-3471-4f27-9e2b-d419d9b2936d', 0, 'Pumpkin', '', '', ''),
+('ca0492df-a7c2-4e7d-9b53-b461184d3e7e', 0, 'Eggplant', '1210', '', ''),
+('ce5b69e1-e968-4dd6-8c1b-9d7c7d28e5ea', 0, 'Coconut Oil', '', '', ''),
+('d00e1cb9-ec6a-4a04-85bd-0cb8739fdd98', 0, 'Mole', '', '', ''),
+('d11fd425-9548-4d66-acfc-ae3d27e67037', 0, 'Cabbage', '500', '', ''),
+('d1e13afe-0a81-4c11-806f-7c6303e984e0', 0, 'Tomato', '600', '', ''),
+('d6446ccc-160c-4e55-ad1e-76d73859931c', 0, 'Raw banana', '', '', ''),
+('d7e22ace-c858-4d98-9114-5bea29aeb8c7', 0, 'Coconut', '', '', ''),
+('d9e2e0ae-6688-40d7-83b5-229d184cef2c', 0, 'Mustard', '', '', ''),
+('daf4942b-c6ce-4686-9b71-858f3de13b75', 0, 'Chillies Dry', '', '', ''),
+('dc1b5535-999e-4a06-88b9-9e0bc15b5380', 0, 'Myrobalan', '', '', ''),
+('e11ba856-bb46-4286-be93-55cc0c373486', 0, 'Atranthss', '', '', ''),
+('e4529e56-82b0-4656-88e9-70ac90b891d0', 0, 'Paddy', '', '', '1675'),
+('e51b9d9a-4cd8-40dc-9bfe-372e9674fc3f', 0, 'Cumin', '', '', ''),
+('e84af80c-f3de-42cb-a2f9-cd8f50fe5215', 0, 'Rice', '', '', '3400'),
+('ea637807-5cc1-43c3-bb91-c5c8abb2a162', 0, 'Green pepper', '1700', '', ''),
+('ec6ad4e8-80f8-4c3b-8cbe-afce802b1ac1', 0, 'Thinai', '', '', ''),
+('f1cc644f-63ca-4c18-9026-50b22d868399', 0, 'Maot', '', '', ''),
+('f3c5feec-f9de-4bd8-b6f7-d9635bb202a7', 0, 'Tianda', '', '', ''),
+('f56f9d58-fef4-432a-a507-0851a468069d', 0, 'Guar', '', '', ''),
+('f771cd20-5f50-4354-bd0b-e2ac6ba946fb', 0, 'Urad dal', '', '', ''),
+('f7835859-862f-4482-9029-76ac70ce8475', 0, 'Mustard oil', '', '', ''),
+('f7e92756-f0e2-4056-bb58-dae335322bae', 0, 'Papaya', '', '', ''),
+('f9563645-6aee-431c-aaf7-8ac79421fd8d', 0, 'Mint (peppermint)', '1500', '', ''),
+('fb4d1d40-04d0-42c0-9a81-f16202e6f0dc', 0, 'Seasonal', '', '', ''),
+('fc750eee-0db0-430c-b3c5-10130f8db7a0', 0, 'Ghia Taroi', '', '', ''),
+('fc851fc7-c8ec-4772-a331-e69bb2b725e9', 0, 'Potato', '1200', '', ''),
+('ff559d6d-09de-4876-80a6-becd21951f0e', 0, 'Flour dough', '', '', ''),
+('ff5bd43e-0230-432b-b054-a743eb9f3c1d', 0, 'Green Augwarae', '', '', '');
+
+--
+-- Triggers `ex`
+--
+DROP TRIGGER IF EXISTS `_after_ins_tr1`;
+DELIMITER //
+CREATE TRIGGER `_after_ins_tr1` AFTER INSERT ON `ex`
+ FOR EACH ROW begin
+declare count int;
+set count=(select count(*) from `temp_crops`);
+
+If(COUNT!=0)
+	then
+
+		update `temp_crops` 
+		set conc_text=(select group_concat(v.q separator ', ') as rt from 
+					(select concat(seeds,'-',price,New) as q from ex where (seeds='Onion' or seeds='Potato'
+					or seeds='Green pepper' or seeds='Eggplant' or seeds='Cotton' or seeds='Arnde Seed'
+					or seeds='Wheat' or seeds='Barley')and (price!=0 and New!=0 and new1!=0))
+					as v group by 'all');
+
+	else
+
+		insert into `temp_crops`
+		VALUES(1,(select group_concat(v.q separator ', ') as rt from 
+		(select concat(seeds,'-',price,New) as q from ex where (seeds='Onion' or seeds='Potato'
+		or seeds='Green pepper' or seeds='Eggplant' or seeds='Cotton' or seeds='Arnde Seed'
+		or seeds='Wheat' or seeds='Barley')and (price!=0 or New!=0 or new1!=0))
+		as v group by 'all'));
+
+END IF;
+end
+//
+
+DELIMITER ;
+DROP TRIGGER IF EXISTS `_after_upd_tr1`;
+DELIMITER //
+CREATE TRIGGER `_after_upd_tr1` AFTER UPDATE ON `ex`
+ FOR EACH ROW begin
+declare count int;
+set count=(select count(*) from `temp_crops`);
+
+If(COUNT!=0)
+then
+
+	update `temp_crops` 
+	set conc_text=(select group_concat(v.q separator ', ') as rt from 
+	(select concat(seeds,'-',price,New,new1) as q from ex where (seeds='Onion' or seeds='Potato'
+	or seeds='Green pepper' or seeds='Eggplant' or seeds='Cotton' or seeds='Arnde Seed'
+	or seeds='Wheat' or seeds='Barley') and (price!=0 or New!=0 OR new1!=0))
+	as v group by 'all');
+
+else
+
+	insert into `temp_crops`
+	VALUES(1,(select group_concat(v.q separator ', ') as rt from 
+	(select concat(seeds,'-',price,New) as q from ex where (seeds='Onion' or seeds='Potato'
+	or seeds='Green pepper' or seeds='Eggplant' or seeds='Cotton' or seeds='Arnde Seed'
+	or seeds='Wheat' or seeds='Barley')and (price!=0 or New!=0 or new1!=0))
+	as v group by 'all'));
+
+END IF;
+end
+//
+DELIMITER ;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `messagein`
+--
+
+CREATE TABLE IF NOT EXISTS `messagein` (
+  `Id` int(11) NOT NULL AUTO_INCREMENT,
+  `SendTime` datetime DEFAULT NULL,
+  `ReceiveTime` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `MessageFrom` varchar(80) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
+  `MessageTo` varchar(80) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
+  `SMSC` varchar(80) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
+  `MessageText` varchar(1000) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
+  `MessageType` varchar(20) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
+  `MessagePDU` text CHARACTER SET utf8 COLLATE utf8_unicode_ci,
+  `Gateway` varchar(80) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
+  `UserId` varchar(80) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
+  PRIMARY KEY (`Id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=185 ;
+
+--
+-- Dumping data for table `messagein`
+--
+
+INSERT INTO `messagein` (`Id`, `SendTime`, `ReceiveTime`, `MessageFrom`, `MessageTo`, `SMSC`, `MessageText`, `MessageType`, `MessagePDU`, `Gateway`, `UserId`) VALUES
+(126, '2013-04-08 01:09:35', '2013-04-07 19:39:39', '+917359176480', '+919624122862', NULL, 'reg 1 2 3', NULL, NULL, NULL, NULL),
+(127, '2013-04-08 01:13:03', '2013-04-07 19:43:05', '+919624771739', '+919624122862', NULL, 'REG 1', NULL, NULL, NULL, NULL),
+(128, '2013-04-08 01:13:06', '2013-04-07 19:43:16', '+919016772302', '+919624122862', NULL, 'Reg 1 2 3', NULL, NULL, NULL, NULL),
+(129, '2013-04-08 19:26:21', '2013-04-08 13:56:34', '+917359176480', '+919624122862', NULL, '3', NULL, NULL, NULL, NULL),
+(130, '2013-04-08 19:28:10', '2013-04-08 13:58:15', '+919624771739', '+919624122862', NULL, '3', NULL, NULL, NULL, NULL),
+(131, '2013-04-08 19:28:36', '2013-04-08 13:59:19', '+917359176480', '+919624122862', NULL, 'chu 123', NULL, NULL, NULL, NULL),
+(132, '2013-04-08 19:30:34', '2013-04-08 14:00:36', '+919033000901', '+919624122862', NULL, 'reg123', NULL, NULL, NULL, NULL),
+(133, '2013-04-08 19:31:10', '2013-04-08 14:12:09', '+919925389728', '+919624122862', NULL, 'Reg 1 2', NULL, NULL, NULL, NULL),
+(134, '2013-04-08 20:57:21', '2013-04-08 15:27:28', '+917359176480', '+919624122862', NULL, 'unreg', NULL, NULL, NULL, NULL),
+(135, '2013-04-08 20:59:49', '2013-04-08 15:29:53', '+917359176480', '+919624122862', NULL, 'unreg', NULL, NULL, NULL, NULL),
+(136, '2013-04-08 21:00:43', '2013-04-08 15:30:49', '+917359176480', '+919624122862', NULL, 'reg 123', NULL, NULL, NULL, NULL),
+(137, '2013-04-08 21:01:18', '2013-04-08 15:31:24', '+917359176480', '+919624122862', NULL, 'unreg', NULL, NULL, NULL, NULL),
+(138, '2013-04-08 23:15:17', '2013-04-08 17:45:20', '+917359176480', '+919624122862', NULL, ' ', NULL, NULL, NULL, NULL),
+(139, '2013-04-08 23:15:34', '2013-04-08 17:45:40', '+919624771739', '+919624122862', NULL, ' ', NULL, NULL, NULL, NULL),
+(140, '2013-04-08 23:16:46', '2013-04-08 17:46:49', '+917359176480', '+919624122862', NULL, 'reg 4*', NULL, NULL, NULL, NULL),
+(141, '2013-04-08 23:56:57', '2013-04-08 18:27:11', '+918866576324', '+919624122862', NULL, 'हरी मिर्च-1700, थोड़ा Ghoad (Kundru)-3000, बैंगन-1200, लौकी-1200, हरी अदरक-6500, टकसाल (पुदीना)-1500, गोभी-500, Okra-3500, रविवार-साफ. उच्च: 39C. पवन वेग: 15-20 किमी/घंटा. पवन दिशा: प.उ.प..', NULL, NULL, NULL, NULL),
+(142, '2013-04-08 23:58:45', '2013-04-08 18:28:49', '+918866576324', '+919624122862', NULL, 'Hadd madarchod.. I need to deregister..', NULL, NULL, NULL, NULL),
+(143, '2013-04-08 23:59:35', '2013-04-08 18:29:42', '+918866576324', '+919624122862', NULL, 'Abe teri ma ki chut.. Bhenchod..', NULL, NULL, NULL, NULL),
+(144, '2013-04-09 00:00:42', '2013-04-08 18:30:48', '+917359176480', '+919624122862', NULL, '3', NULL, NULL, NULL, NULL),
+(145, '2013-04-09 00:01:00', '2013-04-08 18:31:09', '+918866633501', '+919624122862', NULL, 'gh', NULL, NULL, NULL, NULL),
+(146, '2013-04-09 00:01:39', '2013-04-08 18:31:45', '+917359176480', '+919624122862', NULL, 'reg 123', NULL, NULL, NULL, NULL),
+(147, '2013-04-09 00:03:08', '2013-04-08 18:33:11', '+917359176480', '+919624122862', NULL, '20', NULL, NULL, NULL, NULL),
+(148, '2013-04-09 00:26:08', '2013-04-08 18:56:12', '+917359176480', '+919624122862', NULL, 'reg 4 5', NULL, NULL, NULL, NULL),
+(149, '2013-04-09 00:27:23', '2013-04-08 18:57:29', '+917359176480', '+919624122862', NULL, 'unreg', NULL, NULL, NULL, NULL),
+(150, '2013-04-09 00:30:06', '2013-04-08 19:00:10', '+917359176480', '+919624122862', NULL, 'reg 123', NULL, NULL, NULL, NULL),
+(151, '2013-04-09 00:34:35', '2013-04-08 19:04:41', '+917359176480', '+919624122862', NULL, 'reg 123', NULL, NULL, NULL, NULL),
+(152, '2013-04-09 00:36:54', '2013-04-08 19:06:56', '+917359176480', '+919624122862', NULL, 'reg 123', NULL, NULL, NULL, NULL),
+(153, '2013-04-09 00:38:02', '2013-04-08 19:08:07', '+917359176480', '+919624122862', NULL, 'unreg', NULL, NULL, NULL, NULL),
+(154, '2013-04-09 00:53:55', '2013-04-08 19:23:56', '+917359176480', '+919624122862', NULL, 'reg 123', NULL, NULL, NULL, NULL),
+(155, '2013-04-09 00:54:38', '2013-04-08 19:24:41', '+917359176480', '+919624122862', NULL, '19', NULL, NULL, NULL, NULL),
+(156, '2013-04-09 00:56:29', '2013-04-08 19:26:32', '+917359176480', '+919624122862', NULL, 'chu 123', NULL, NULL, NULL, NULL),
+(157, '2013-04-09 00:58:24', '2013-04-08 19:28:28', '+917359176480', '+919624122862', NULL, 'reg 12', NULL, NULL, NULL, NULL),
+(158, '2013-04-09 00:59:10', '2013-04-08 19:29:13', '+917359176480', '+919624122862', NULL, '1', NULL, NULL, NULL, NULL),
+(159, '2013-04-09 01:03:26', '2013-04-08 19:33:29', '+917359176480', '+919624122862', NULL, 'Reg 123', NULL, NULL, NULL, NULL),
+(160, '2013-04-09 01:06:40', '2013-04-08 19:36:45', '+917359176480', '+919624122862', NULL, 'Reg 123', NULL, NULL, NULL, NULL),
+(161, '2013-04-09 01:22:24', '2013-04-08 19:52:29', '+917359176480', '+919624122862', NULL, 'unreg', NULL, NULL, NULL, NULL),
+(162, '2013-04-09 01:23:27', '2013-04-08 19:53:29', '+917359176480', '+919624122862', NULL, 'Reg 123', NULL, NULL, NULL, NULL),
+(163, '2013-04-09 01:24:12', '2013-04-08 19:54:15', '+917359176480', '+919624122862', NULL, 'REG 56', NULL, NULL, NULL, NULL),
+(164, '2013-04-09 01:25:21', '2013-04-08 19:55:25', '+917359176480', '+919624122862', NULL, '29', NULL, NULL, NULL, NULL),
+(165, '2013-04-09 01:26:07', '2013-04-08 19:56:11', '+917359176480', '+919624122862', NULL, 'reg 12', NULL, NULL, NULL, NULL),
+(166, '2013-04-09 01:26:20', '2013-04-08 19:56:26', '+917359176480', '+919624122862', NULL, '3', NULL, NULL, NULL, NULL),
+(167, '2013-04-09 17:14:10', '2013-04-09 11:44:17', '+917359176480', '+919624122862', NULL, 'unreg', NULL, NULL, NULL, NULL),
+(168, '2013-04-09 17:15:18', '2013-04-09 11:45:29', '+917359176480', '+919624122862', NULL, '3', NULL, NULL, NULL, NULL),
+(169, '2013-04-09 17:23:49', '2013-04-09 11:54:01', 'IG-612345', '+919624122862', NULL, '0605040B840B84,1B0601AE02056A0045C60C03676F6F2E676C2F4545415659000AC3072013040818525110C30720130418185251010352616A752053726976617374617620636F6D6564792E204461746120436861726765206170706C79000101', NULL, NULL, NULL, NULL),
+(170, '2013-04-09 17:29:41', '2013-04-09 11:59:43', '+919033000901', '+919624122862', NULL, 'Unreg', NULL, NULL, NULL, NULL),
+(171, '2013-04-10 01:43:58', '2013-04-09 20:13:59', '+919624771739', '+919624122862', NULL, 'REG 1 3', NULL, NULL, NULL, NULL),
+(172, '2013-04-10 01:44:29', '2013-04-09 20:14:34', '+917359176480', '+919624122862', NULL, 'reg 123', NULL, NULL, NULL, NULL),
+(173, '2013-04-10 01:47:31', '2013-04-09 20:17:35', '+919624771739', '+919624122862', NULL, 'Haha. Arey ho gaya. Wanted to check somethin. I cannot health query. Am not registered. :-P', NULL, NULL, NULL, NULL),
+(174, '2013-04-10 01:48:01', '2013-04-09 20:18:04', '+919624771739', '+919624122862', NULL, '5', NULL, NULL, NULL, NULL),
+(175, '2013-04-10 01:51:26', '2013-04-09 20:21:30', '+919624771739', '+919624122862', NULL, 'Awesome. Though it only sends symptoms. Neither disease name nor cure. ', NULL, NULL, NULL, NULL),
+(176, '2013-04-10 01:53:09', '2013-04-09 20:23:11', '+917359176480', '+919624122862', NULL, '6', NULL, NULL, NULL, NULL),
+(177, '2013-04-10 01:56:54', '2013-04-09 20:26:59', '+917359176480', '+919624122862', NULL, '7', NULL, NULL, NULL, NULL),
+(178, '2013-04-10 01:57:51', '2013-04-09 20:27:55', '+917359176480', '+919624122862', NULL, '4', NULL, NULL, NULL, NULL),
+(179, '2013-04-10 02:00:10', '2013-04-09 20:30:15', '+917359176480', '+919624122862', NULL, '8', NULL, NULL, NULL, NULL),
+(180, '2013-04-10 02:02:13', '2013-04-09 20:32:13', '+917359176480', '+919624122862', NULL, '9', NULL, NULL, NULL, NULL),
+(181, '2013-04-10 02:03:04', '2013-04-09 20:33:07', '+917359176480', '+919624122862', NULL, '11', NULL, NULL, NULL, NULL),
+(182, '2013-04-10 03:12:08', '2013-04-09 21:42:13', '+917359176480', '+919624122862', NULL, 'reg 45', NULL, NULL, NULL, NULL),
+(183, '2013-04-10 03:13:49', '2013-04-09 21:43:54', '+917359176480', '+919624122862', NULL, ' ', NULL, NULL, NULL, NULL),
+(184, '2013-04-10 03:14:27', '2013-04-09 21:44:29', '+917359176480', '+919624122862', NULL, '40', NULL, NULL, NULL, NULL);
+
+--
+-- Triggers `messagein`
+--
+DROP TRIGGER IF EXISTS `_after_ins_tr3`;
+DELIMITER //
+CREATE TRIGGER `_after_ins_tr3` AFTER INSERT ON `messagein`
+ FOR EACH ROW BEGIN
+DECLARE Count INT;
+DECLARE mob VARCHAR(200);
+DECLARE date VARCHAR(200);
+DECLARE mob_select BIGINT;
+DECLARE IntNumbers VARCHAR(200);
+DECLARE Strin VARCHAR(1000);
+DECLARE Strin_h VARCHAR(5000);
+DECLARE tim_lat TIMESTAMP;
+DECLARE temp_pass VARCHAR(20);
+DECLARE reg_check VARCHAR(20);
+declare str_health varchar(5000);
+declare ro int;
+declare i int;
+Declare sub varchar(5); 
+SET Count = 1;
+SET IntNumbers = '';
+
+SET GLOBAL event_scheduler = ON;
+
+set Strin = (select MessageText from `Messagein` order by receiveTime desc limit 1);
+set Strin_h = (select MessageText from `messagein` order by receiveTime desc limit 1);
+set mob = (select MessageFrom from `messagein` order by receiveTime desc limit 1);
+set mob_select=(select count(*) from (select mobile from `useraccount` where mobile=mob limit 1)as r);
+set date=(select receiveTime from `messagein` order BY receiveTime desc limit 1);
+
+set ro=(select COUNT(*) from temp_main_db where mobile=mob and reg_code=3);
+
+if((strin_h='1' or strin_h='2' or strin_h='3' or strin_h='4' or strin_h='5'
+		or strin_h='6' or strin_h='7' or strin_h='8' or strin_h='9'
+		or strin_h='10' or strin_h='11' or strin_h='12' or strin_h='13'
+		or strin_h='14') and ro=1)
+
+	THEN
+		set str_health=(select CONCAT(name,' symptoms: ',symptoms,' cure ',cure) from `disease` 
+             	where id=strin_h);
+			insert into `messageout`(MessageTo,MessageFrom,MessageText)
+			VALUES (mob,"+919624122862",str_health);
+     
+ELSEIF((strin_h='1' or strin_h='2' or strin_h='3' or strin_h='4' or strin_h='5'
+or strin_h='6' or strin_h='7' or strin_h='8' or strin_h='9'
+or strin_h='10' or strin_h='11' or strin_h='12' or strin_h='13'
+or strin_h='14') and ro!=1)     
+   
+   THEN
+		insert into `messageout`(MessageTo,MessageFrom,MessageText)
+		VALUES (mob,"+919624122862"," इस सेवा के लिए सदस्यता नहीं ली. भेजें संदेश REG 1 2 3");
+
+ELSEIF(substring(strin,1,5)='Unreg' or strin='UNREG' or strin='unreg')   
+
+	THEN
+
+delete from `useraccount`where mobile=mob;
+delete from `temp_main_db`where mobile=mob;
+
+insert into `messageout`(MessageTo,MessageFrom,MessageText)
+     VALUES (mob,"+919624122862"," सफलतापूर्वक सदस्यता वापस");
+
+ELSEIF(strin_h!='reg 1 2 3' and strin_h!='Reg 1 2 3' and strin_h!='REG 1 2 3'
+ and strin_h!='Reg 123' and strin_h!='REG 123' and strin_h!='reg 123' and 
+strin_h!='reg 1 2' and strin_h!='Reg 1 2' and strin_h!='REG 1 2' 
+and strin_h!='Reg 12' and strin_h!='REG 1 2' and strin_h!='reg 12' and
+ strin_h!='reg 2 3' and strin_h!='Reg 2 3' and strin_h!='reg 23' 
+ and strin_h!='REG 2 3' and strin_h!='Reg 23' and strin_h!='REG 23' and 
+strin_h!='reg 1 3' and strin_h!='Reg 1 3' and strin_h!='REG 1 3' and strin_h!='Reg 13' 
+and strin_h!='REG 13' and strin_h!='reg 13' and strin_h!='reg 1' and strin_h!='Reg 1'
+and strin_h!='REG 1' and strin_h!='reg 2' and strin_h!='Reg 2' and strin_h!='REG 2'
+ and strin_h!='reg 3' and strin_h!='Reg 3' and strin_h!='REG 3')
+
+ THEN
+
+	insert into `messageout`(MessageTo,MessageFrom,MessageText)
+     VALUES (mob,"+919624122862"," 'गलत संदेश. REG 1 2 3 भेजे");
+     
+     ELSE
+
+		set temp_pass=(SELECT FLOOR(10000 + RAND() * 89999) AS random_number
+		FROM messagein 
+		WHERE "random_number" NOT IN (SELECT password FROM useraccount)
+		LIMIT 1);
+
+
+if (mob_select=0)
+THEN
+set reg_check=SUBSTRING(strin,1,3);
+if(reg_check='reg' or reg_check='REG' or reg_check='Reg')
+then
+SET IntNumbers =SUBSTRING(Strin,4,6);
+		insert into useraccount VALUES(mob,date,CURRENT_TIMESTAMP,temp_pass,IntNumbers);
+        
+        WHILE Count <= LENGTH(Strin)	
+DO
+
+	IF (SUBSTRING(Strin,Count,1) >= '0'
+		AND SUBSTRING(Strin,Count,1) <= '9') then
+
+		SET IntNumbers = SUBSTRING(Strin,Count,1);
+		insert into `temp_main_db` VALUES(IntNumbers,mob);
+	END IF;
+	SET Count = Count + 1;
+
+END WHILE;
+else 
+insert into `messageout`(MessageTo,MessageFrom,MessageText)
+     VALUES (mob,"+919624122862","गलत संदेश. REG 1 2 3 भेजे या स्वास्थ्य संबंधित प्रश्नों के लिए संख्या 1-15 के बीच की भेजें");
+     
+ END if;
+
+ELSE 
+set reg_check=SUBSTRING(strin,1,3);
+if(reg_check='reg' or reg_check='REG' or reg_check='Reg')
+THEN
+		SET IntNumbers =SUBSTRING(Strin,4,6);
+   		update `useraccount`
+		set subs=IntNumbers where mobile=mob;			
+        
+        delete from `temp_main_db` where mobile=mob;
+    WHILE Count <= LENGTH(Strin)	
+DO
+
+	IF (SUBSTRING(Strin,Count,1) >= '0'
+		AND SUBSTRING(Strin,Count,1) <= '9') then
+
+		SET IntNumbers = SUBSTRING(Strin,Count,1);
+		insert into `temp_main_db` VALUES(IntNumbers,mob);
+	END IF;
+	SET Count = Count + 1;
+
+END WHILE;	        
+
+else
+
+insert into `messageout`(MessageTo,MessageFrom,MessageText)
+     VALUES (mob,"+919624122862"," 'गलत संदेश. REG 1 2 3 भेजे");
+
+END if;     
+end if;
+end if;
+END
+//
+DELIMITER ;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `messagelog`
+--
+
+CREATE TABLE IF NOT EXISTS `messagelog` (
+  `Id` int(11) NOT NULL AUTO_INCREMENT,
+  `SendTime` datetime DEFAULT NULL,
+  `ReceiveTime` datetime DEFAULT NULL,
+  `StatusCode` int(11) DEFAULT NULL,
+  `StatusText` varchar(80) DEFAULT NULL,
+  `MessageTo` varchar(80) DEFAULT NULL,
+  `MessageFrom` varchar(80) DEFAULT NULL,
+  `MessageText` text,
+  `MessageType` varchar(20) DEFAULT NULL,
+  `MessageId` varchar(80) DEFAULT NULL,
+  `ErrorCode` varchar(20) DEFAULT NULL,
+  `ErrorText` varchar(80) DEFAULT NULL,
+  `Gateway` varchar(80) DEFAULT NULL,
+  `MessagePDU` text,
+  `UserId` varchar(80) DEFAULT NULL,
+  `UserInfo` text,
+  PRIMARY KEY (`Id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `messageout`
+--
+
+CREATE TABLE IF NOT EXISTS `messageout` (
+  `Id` int(11) NOT NULL AUTO_INCREMENT,
+  `MessageTo` varchar(80) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `MessageFrom` varchar(80) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `MessageText` varchar(5000) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `MessageType` varchar(2000) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `Gateway` varchar(80) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `UserId` varchar(80) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `UserInfo` text COLLATE utf8_unicode_ci,
+  `Priority` int(11) DEFAULT NULL,
+  `Scheduled` datetime DEFAULT NULL,
+  `IsSent` tinyint(1) NOT NULL DEFAULT '0',
+  `IsRead` tinyint(1) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`Id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=243 ;
+
+--
+-- Dumping data for table `messageout`
+--
+
+INSERT INTO `messageout` (`Id`, `MessageTo`, `MessageFrom`, `MessageText`, `MessageType`, `Gateway`, `UserId`, `UserInfo`, `Priority`, `Scheduled`, `IsSent`, `IsRead`) VALUES
+(173, '+917359176480', '+919624122862', 'Your login password for site: 76468', NULL, NULL, NULL, NULL, NULL, NULL, 1, 0),
+(174, '+919624771739', '+919624122862', 'Your login password for site: 24415', NULL, NULL, NULL, NULL, NULL, NULL, 1, 0),
+(175, '+919016772302', '+919624122862', 'Your login password for site: 11644', NULL, NULL, NULL, NULL, NULL, NULL, 1, 0),
+(176, '+917359176480', '+919624122862', 'छोटे Ghoad (Kundru)-3000, बैंगन-1200, लौकी-1200, गोभी-500, हरी अदरक-6500, Okra-3500, हरी मिर्च-1700, टकसाल (पुदीना)-1500, मंगलवार-साफ. उच्च: 37C. पवन वेग: 10-20 किमी/घंटा. पवन दिशा: प.उ.प..', NULL, NULL, NULL, NULL, NULL, NULL, 1, 0),
+(177, '+919016772302', '+919624122862', 'छोटे Ghoad (Kundru)-3000, बैंगन-1200, लौकी-1200, गोभी-500, हरी अदरक-6500, Okra-3500, हरी मिर्च-1700, टकसाल (पुदीना)-1500, मंगलवार-साफ. उच्च: 37C. पवन वेग: 10-20 किमी/घंटा. पवन दिशा: प.उ.प..', NULL, NULL, NULL, NULL, NULL, NULL, 1, 0),
+(178, '+919624771739', '+919624122862', 'छोटे Ghoad (Kundru)-3000, बैंगन-1200, लौकी-1200, गोभी-500, हरी अदरक-6500, Okra-3500, हरी मिर्च-1700, टकसाल (पुदीना)-1500', NULL, NULL, NULL, NULL, NULL, NULL, 1, 0),
+(179, '+917359176480', '+919624122862', 'symptoms: अस्थमा घरघराहट, सांस की तकलीफ, सीने में जकड़न, और खाँसी की आवर्तक एपिसोड के द्वारा होती है', NULL, NULL, NULL, NULL, NULL, NULL, 1, 0),
+(180, '+919624771739', '+919624122862', ' इस सेवा के लिए सदस्यता नहीं ली. भेजें संदेश REG 1 2 3', NULL, NULL, NULL, NULL, NULL, NULL, 1, 0),
+(181, '+917359176480', '+919624122862', ' ''गलत संदेश. REG 1 2 3 भेजे', NULL, NULL, NULL, NULL, NULL, NULL, 1, 0),
+(182, '+919033000901', '+919624122862', 'Your login password for site: 86211', NULL, NULL, NULL, NULL, NULL, NULL, 1, 0),
+(183, '+919925389728', '+919624122862', 'Your login password for site: 43857', NULL, NULL, NULL, NULL, NULL, NULL, 1, 0),
+(184, '+917359176480', '+919624122862', 'मंगलवार-साफ. उच्च: 37C. पवन वेग: 10-20 किमी/घंटा. पवन दिशा: प.उ.प.., छोटे Ghoad (Kundru)-3000, हरी मिर्च-1700, Okra-3500, गोभी-500, टकसाल (पुदीना)-1500, लौकी-1200, हरी अदरक-6500, बैंगन-1200', NULL, NULL, NULL, NULL, NULL, NULL, 1, 0),
+(185, '+919016772302', '+919624122862', 'छोटे Ghoad (Kundru)-3000, हरी मिर्च-1700, Okra-3500, गोभी-500, टकसाल (पुदीना)-1500, लौकी-1200, हरी अदरक-6500, बैंगन-1200, मंगलवार-साफ. उच्च: 37C. पवन वेग: 10-20 किमी/घंटा. पवन दिशा: प.उ.प..', NULL, NULL, NULL, NULL, NULL, NULL, 1, 0),
+(186, '+919033000901', '+919624122862', 'मंगलवार-साफ. उच्च: 37C. पवन वेग: 10-20 किमी/घंटा. पवन दिशा: प.उ.प.., छोटे Ghoad (Kundru)-3000, हरी मिर्च-1700, Okra-3500, गोभी-500, टकसाल (पुदीना)-1500, लौकी-1200, हरी अदरक-6500, बैंगन-1200', NULL, NULL, NULL, NULL, NULL, NULL, 1, 0),
+(187, '+919624771739', '+919624122862', 'छोटे Ghoad (Kundru)-3000, हरी मिर्च-1700, Okra-3500, गोभी-500, टकसाल (पुदीना)-1500, लौकी-1200, हरी अदरक-6500, बैंगन-1200', NULL, NULL, NULL, NULL, NULL, NULL, 1, 0),
+(188, '+919925389728', '+919624122862', 'मंगलवार-साफ. उच्च: 37C. पवन वेग: 10-20 किमी/घंटा. पवन दिशा: प.उ.प.., छोटे Ghoad (Kundru)-3000, हरी मिर्च-1700, Okra-3500, गोभी-500, टकसाल (पुदीना)-1500, लौकी-1200, हरी अदरक-6500, बैंगन-1200', NULL, NULL, NULL, NULL, NULL, NULL, 1, 0),
+(189, '+917359176480', '+919624122862', ' ''गलत संदेश. REG 1 2 3 भेजे', NULL, NULL, NULL, NULL, NULL, NULL, 1, 0),
+(190, '+917359176480', '+919624122862', ' ''गलत संदेश. REG 1 2 3 भेजे', NULL, NULL, NULL, NULL, NULL, NULL, 1, 0),
+(191, '+919624771739', '+919624122862', ' ''गलत संदेश. REG 1 2 3 भेजे', NULL, NULL, NULL, NULL, NULL, NULL, 1, 0),
+(192, '+917359176480', '+919624122862', 'Your login password for site: 37504', NULL, NULL, NULL, NULL, NULL, NULL, 1, 0),
+(193, '+918866576324', '+919624122862', ' ''गलत संदेश. REG 1 2 3 भेजे', NULL, NULL, NULL, NULL, NULL, NULL, 1, 0),
+(194, '+918866576324', '+919624122862', ' ''गलत संदेश. REG 1 2 3 भेजे', NULL, NULL, NULL, NULL, NULL, NULL, 1, 0),
+(195, '+918866576324', '+919624122862', ' ''गलत संदेश. REG 1 2 3 भेजे', NULL, NULL, NULL, NULL, NULL, NULL, 1, 0),
+(196, '+917359176480', '+919624122862', ' इस सेवा के लिए सदस्यता नहीं ली. भेजें संदेश REG 1 2 3', NULL, NULL, NULL, NULL, NULL, NULL, 1, 0),
+(197, '+918866633501', '+919624122862', ' ''गलत संदेश. REG 1 2 3 भेजे', NULL, NULL, NULL, NULL, NULL, NULL, 1, 0),
+(198, '+917359176480', '+919624122862', ' ''गलत संदेश. REG 1 2 3 भेजे', NULL, NULL, NULL, NULL, NULL, NULL, 1, 0),
+(199, '+917359176480', '+919624122862', ' ''गलत संदेश. REG 1 2 3 भेजे', NULL, NULL, NULL, NULL, NULL, NULL, 1, 0),
+(200, '+917359176480', '+919624122862', ' ''गलत संदेश. REG 1 2 3 भेजे', NULL, NULL, NULL, NULL, NULL, NULL, 1, 0),
+(201, '+917359176480', '+919624122862', ' ''गलत संदेश. REG 1 2 3 भेजे', NULL, NULL, NULL, NULL, NULL, NULL, 1, 0),
+(202, '+917359176480', '+919624122862', 'Your login password for site: 68063', NULL, NULL, NULL, NULL, NULL, NULL, 1, 0),
+(203, '+917359176480', '+919624122862', ' सफलतापूर्वक सदस्यता वापस', NULL, NULL, NULL, NULL, NULL, NULL, 1, 0),
+(204, '+917359176480', '+919624122862', 'Your login password for site: 26851', NULL, NULL, NULL, NULL, NULL, NULL, 1, 0),
+(205, '+917359176480', '+919624122862', ' ''गलत संदेश. REG 1 2 3 भेजे', NULL, NULL, NULL, NULL, NULL, NULL, 1, 0),
+(206, '+917359176480', '+919624122862', ' ''गलत संदेश. REG 1 2 3 भेजे', NULL, NULL, NULL, NULL, NULL, NULL, 1, 0),
+(207, '+917359176480', '+919624122862', ' इस सेवा के लिए सदस्यता नहीं ली. भेजें संदेश REG 1 2 3', NULL, NULL, NULL, NULL, NULL, NULL, 1, 0),
+(208, '+917359176480', '+919624122862', ' सफलतापूर्वक सदस्यता वापस', NULL, NULL, NULL, NULL, NULL, NULL, 1, 0),
+(209, '+917359176480', '+919624122862', 'Your login password for site: 33727', NULL, NULL, NULL, NULL, NULL, NULL, 1, 0),
+(210, '+917359176480', '+919624122862', ' ''गलत संदेश. REG 1 2 3 भेजे', NULL, NULL, NULL, NULL, NULL, NULL, 1, 0),
+(211, '+917359176480', '+919624122862', ' ''गलत संदेश. REG 1 2 3 भेजे', NULL, NULL, NULL, NULL, NULL, NULL, 1, 0),
+(212, '+917359176480', '+919624122862', ' इस सेवा के लिए सदस्यता नहीं ली. भेजें संदेश REG 1 2 3', NULL, NULL, NULL, NULL, NULL, NULL, 1, 0),
+(213, '+917359176480', '+919624122862', ' सफलतापूर्वक सदस्यता वापस', NULL, NULL, NULL, NULL, NULL, NULL, 1, 0),
+(214, '+917359176480', '+919624122862', ' इस सेवा के लिए सदस्यता नहीं ली. भेजें संदेश REG 1 2 3', NULL, NULL, NULL, NULL, NULL, NULL, 1, 0),
+(215, 'IG-612345', '+919624122862', ' ''गलत संदेश. REG 1 2 3 भेजे', NULL, NULL, NULL, NULL, NULL, NULL, 1, 0),
+(216, '+919033000901', '+919624122862', ' सफलतापूर्वक सदस्यता वापस', NULL, NULL, NULL, NULL, NULL, NULL, 1, 0),
+(217, '+917359176480', '+919624122862', 'Your login password for site: 48728', NULL, NULL, NULL, NULL, NULL, NULL, 1, 0),
+(218, '+919624771739', '+919624122862', ' ''गलत संदेश. REG 1 2 3 भेजे', NULL, NULL, NULL, NULL, NULL, NULL, 1, 0),
+(219, '+919624771739', '+919624122862', 'symptoms: एलर्जी के लक्षण खुजली, बहती या भरी हुई नाक, साइनस दबाव, छींकने, खुजली, लाल, सूजन जल और पान', NULL, NULL, NULL, NULL, NULL, NULL, 1, 0),
+(220, '+919624771739', '+919624122862', ' ''गलत संदेश. REG 1 2 3 भेजे', NULL, NULL, NULL, NULL, NULL, NULL, 1, 0),
+(221, '+917359176480', '+919624122862', 'symptoms: गठिया के लक्षण जोड़ों का दर्द हैं रहे हैं और ऐसा लगता है जैसे यह आप का समर्थन नहीं करेंगे.', NULL, NULL, NULL, NULL, NULL, NULL, 1, 0),
+(222, '+917359176480', '+919624122862', 'symptoms: जलने के लक्षण हैं अगर त्वचा का रंग बदलने और जलन का अनुभव शुरू होता है. cure जलता का इलाज अ', NULL, NULL, NULL, NULL, NULL, NULL, 1, 0),
+(223, '+917359176480', '+919624122862', 'symptoms: ब्रोंकाइटिस के लक्षण लगातार खांसी, थक गया, खाँसी या गहरी सांस लेने और सांस की शोर साँस लेन', NULL, NULL, NULL, NULL, NULL, NULL, 1, 0),
+(224, '+917359176480', '+919624122862', 'symptoms: आप उच्च रक्त कोलेस्ट्रॉल के लिए जोखिम में हैं अगर आप संतृप्त वसा और कोलेस्ट्रॉल में उच्च ख', NULL, NULL, NULL, NULL, NULL, NULL, 1, 0),
+(225, '+917359176480', '+919624122862', 'कब्ज symptoms: कब्ज के लक्षण, तनाव आप पूरी तरह से अपनी आंत खाली नहीं था की तरह लग रहा है और ऐंठन, दर', NULL, NULL, NULL, NULL, NULL, NULL, 1, 0),
+(226, '+917359176480', '+919624122862', 'दस्त symptoms: दस्त के साथ, आप अक्सर मल त्याग दिया है या आप ढीला तरल मल है. दस्त सबसे अधिक बार 2 से 3 दिनों तक चलेगा. आपके दस्त 3 दिनों में बेहतर नहीं मिलता है, तो अपने डॉक्टर से मिलते हैं. cure दस्त के इलाज के दूध और डेयरी उत्पादों से परहेज कर रहे हैं जब तक आपके दस्त पानी की कम से कम 8 गिलास एक दिन पीने, छोटे भोजन खाने के दिन के दौरान हर 2 से 3 घंटे के लिए बंद कर दिया है.', NULL, NULL, NULL, NULL, NULL, NULL, 1, 0),
+(227, '+917359176480', '+919624122862', ' ''गलत संदेश. REG 1 2 3 भेजे', NULL, NULL, NULL, NULL, NULL, NULL, 1, 0),
+(228, '+917359176480', '+919624122862', ' ''गलत संदेश. REG 1 2 3 भेजे', NULL, NULL, NULL, NULL, NULL, NULL, 1, 0),
+(229, '+917359176480', '+919624122862', ' ''गलत संदेश. REG 1 2 3 भेजे', NULL, NULL, NULL, NULL, NULL, NULL, 1, 0),
+(230, 'admin', '+919624122862', 'password: admin', NULL, NULL, NULL, NULL, NULL, NULL, 1, 0),
+(231, '+917359176480', '+919624122862', 'hi this is our first message', NULL, NULL, NULL, NULL, NULL, NULL, 1, 0),
+(232, '+919016772302', '+919624122862', 'hi this is our first message', NULL, NULL, NULL, NULL, NULL, NULL, 1, 0),
+(233, '+919624771739', '+919624122862', 'hi this is our first message', NULL, NULL, NULL, NULL, NULL, NULL, 1, 0),
+(234, '+919925389728', '+919624122862', 'hi this is our first message', NULL, NULL, NULL, NULL, NULL, NULL, 1, 0),
+(235, 'admin', '+919624122862', 'hi this is our first message', NULL, NULL, NULL, NULL, NULL, NULL, 1, 0),
+(236, '+917359176480', '+919624122862', 'e gram seva rocks !!!!!!', NULL, NULL, NULL, NULL, NULL, NULL, 1, 0),
+(237, '+919016772302', '+919624122862', 'e gram seva rocks !!!!!!', NULL, NULL, NULL, NULL, NULL, NULL, 1, 0),
+(238, '+919624771739', '+919624122862', 'e gram seva rocks !!!!!!', NULL, NULL, NULL, NULL, NULL, NULL, 1, 0),
+(239, '+919925389728', '+919624122862', 'e gram seva rocks !!!!!!', NULL, NULL, NULL, NULL, NULL, NULL, 1, 0),
+(240, 'admin', '+919624122862', 'e gram seva rocks !!!!!!', NULL, NULL, NULL, NULL, NULL, NULL, 1, 0),
+(241, '+917359176480', '+919624122862', 'karan', NULL, NULL, NULL, NULL, NULL, NULL, 1, 0),
+(242, '+919624771739', '+919624122862', '24415', NULL, NULL, NULL, NULL, NULL, NULL, 1, 0);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `ozekimessagein`
+--
+
+CREATE TABLE IF NOT EXISTS `ozekimessagein` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `sender` varchar(30) NOT NULL,
+  `receiver` varchar(30) NOT NULL,
+  `msg` varchar(160) NOT NULL,
+  `senttime` varchar(100) NOT NULL,
+  `receivedtime` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `operator` varchar(100) NOT NULL,
+  `msgtype` varchar(160) NOT NULL,
+  `reference` varchar(100) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=101 ;
+
+--
+-- Dumping data for table `ozekimessagein`
+--
+
+INSERT INTO `ozekimessagein` (`id`, `sender`, `receiver`, `msg`, `senttime`, `receivedtime`, `operator`, `msgtype`, `reference`) VALUES
+(94, '+9199837456', '9624122862', '', 'ythg', '2013-04-04 21:35:30', 'df', 'df', 'bf'),
+(95, '+9199837456', '+917878779934', '', 'hjf', '2013-04-04 21:35:30', '34ff', 'df', 'bf'),
+(96, '+9199837456', '3452', '', 'df', '2013-04-04 21:35:30', 'hg', 'df', 'th'),
+(97, '+9199837456', '45', '', 'dvg', '2013-04-04 21:35:30', 'gfdf', 'dfdf', 'vc'),
+(98, '+919624122862', '+917878779934', '', 'hjf', '2013-04-04 21:35:30', 'idea', 'dfdf', 'dfer'),
+(99, '+9199837456', '3452', '', 'sd', '2013-04-04 21:35:30', 'df', 'df', 'sdfsf'),
+(100, '+9199099103409', '9624122862', '', 'KFSG', '2013-04-04 21:35:30', 'D', 'H', 'J');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `ozekimessageout`
+--
+
+CREATE TABLE IF NOT EXISTS `ozekimessageout` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `sender` varchar(30) NOT NULL,
+  `receiver` varchar(30) NOT NULL,
+  `msg` varchar(160) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `senttime` varchar(100) NOT NULL,
+  `receivedtime` varchar(100) NOT NULL,
+  `reference` varchar(100) NOT NULL,
+  `status` varchar(20) NOT NULL,
+  `msgtype` varchar(160) NOT NULL,
+  `operator` varchar(100) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+
+--
+-- Dumping data for table `ozekimessageout`
+--
+
+INSERT INTO `ozekimessageout` (`id`, `sender`, `receiver`, `msg`, `senttime`, `receivedtime`, `reference`, `status`, `msgtype`, `operator`) VALUES
+(1, '+917359176480', '+919624771739', 'czkWUdkbfVl QsQM+ksa esa cM+h ''oklufy;ks ds Hkhrjh Hkkx]', '2013-03-05 02:02:02', '2013-04-05 12:12:12', '  ', 'send', 'SMS:TEXT:UCS2', 'idea');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `temp_crops`
+--
+
+CREATE TABLE IF NOT EXISTS `temp_crops` (
+  `id` int(11) NOT NULL,
+  `conc_text` varchar(1000) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `temp_crops`
+--
+
+INSERT INTO `temp_crops` (`id`, `conc_text`) VALUES
+(1, 'Barley-1225, Onion-1050, Wheat-1600, Arnde seed-3250, Cotton-5235, Eggplant-1210, Green pepper-1700, Potato-1200');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `temp_main_db`
+--
+
+CREATE TABLE IF NOT EXISTS `temp_main_db` (
+  `reg_code` varchar(20) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
+  `mobile` varchar(200) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 PACK_KEYS=0;
+
+--
+-- Dumping data for table `temp_main_db`
+--
+
+INSERT INTO `temp_main_db` (`reg_code`, `mobile`) VALUES
+('1', '+919016772302'),
+('2', '+919016772302'),
+('3', '+919016772302'),
+('1', '+919925389728'),
+('2', '+919925389728'),
+('1', '+919624771739'),
+('3', '+919624771739'),
+('1', '+917359176480'),
+('3', '+917359176480');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `testtb`
+--
+
+CREATE TABLE IF NOT EXISTS `testtb` (
+  `id` int(11) NOT NULL,
+  `att1` text CHARACTER SET utf8 COLLATE utf8_unicode_ci,
+  `att2` text CHARACTER SET utf8 COLLATE utf8_unicode_ci
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `testtb`
+--
+
+INSERT INTO `testtb` (`id`, `att1`, `att2`) VALUES
+(1, 'apple', 'potato');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `testtrans`
+--
+
+CREATE TABLE IF NOT EXISTS `testtrans` (
+  `idt` int(11) NOT NULL,
+  `att1t` text CHARACTER SET utf8 COLLATE utf8_unicode_ci,
+  `att2t` text CHARACTER SET utf8 COLLATE utf8_unicode_ci
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `testtrans`
+--
+
+INSERT INTO `testtrans` (`idt`, `att1t`, `att2t`) VALUES
+(1, 'सेब', 'आलू');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `useraccount`
+--
+
+CREATE TABLE IF NOT EXISTS `useraccount` (
+  `mobile` varchar(20) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `reg_date` varchar(100) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `reg_mod_date` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `password` varchar(100) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `subs` varchar(200) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  PRIMARY KEY (`mobile`),
+  UNIQUE KEY `mobile` (`mobile`),
+  KEY `password_2` (`password`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 PACK_KEYS=0;
+
+--
+-- Dumping data for table `useraccount`
+--
+
+INSERT INTO `useraccount` (`mobile`, `reg_date`, `reg_mod_date`, `password`, `subs`) VALUES
+('+917359176480', '2013-04-10 01:44:34', '2013-04-09 22:18:06', 'karan', '13'),
+('+919016772302', '2013-04-08 01:13:06', '2013-04-07 19:43:16', '11644', ' 1 2 3'),
+('+919624771739', '2013-04-08 01:13:03', '2013-04-09 20:13:59', '24415', ' 1 3'),
+('+919925389728', '2013-04-08 19:31:10', '2013-04-08 14:12:09', '43857', ' 1 2'),
+('admin', '', '2013-04-09 22:21:34', 'admin', '');
+
+--
+-- Triggers `useraccount`
+--
+DROP TRIGGER IF EXISTS `_after_ins_tr2`;
+DELIMITER //
+CREATE TRIGGER `_after_ins_tr2` AFTER INSERT ON `useraccount`
+ FOR EACH ROW BEGIN
+
+declare str VARCHAR(100);
+declare str1 VARCHAR(100);
+declare mob VARCHAR(20);
+
+set str=(select concat('password: ',password) from useraccount 
+					order by reg_mod_date desc limit 1);
+
+set mob=(select mobile from useraccount order by reg_mod_date desc limit 1);
+
+insert into `messageout`(MessageTo,MessageFrom,MessageText) VALUES (mob,"+919624122862",str);
+
+END
+//
+DELIMITER ;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `weather`
+--
+
+CREATE TABLE IF NOT EXISTS `weather` (
+  `info_date` text CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `description` text CHARACTER SET utf8 COLLATE utf8_unicode_ci
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `weather`
+--
+
+INSERT INTO `weather` (`info_date`, `description`) VALUES
+('बृहस्पतिवार', 'साफ. उच्च: 37C. पवन वेग: 10-20 किमी/घंटा. पवन दिशा: प.उ.प..');
+
+--
+-- Triggers `weather`
+--
+DROP TRIGGER IF EXISTS `_after_upd_tr3`;
+DELIMITER //
+CREATE TRIGGER `_after_upd_tr3` AFTER UPDATE ON `weather`
+ FOR EACH ROW BEGIN
+
+update crops 
+set name=(select concat(info_date,'-',description) as q from weather) where reg_code=2;
+
+END
+//
+DELIMITER ;
+
+DELIMITER $$
+--
+-- Events
+--
+CREATE DEFINER=`root`@`localhost` EVENT `event` ON SCHEDULE EVERY 1 YEAR STARTS '2013-04-08 17:36:00' ON COMPLETION PRESERVE ENABLE DO BEGIN
+
+DECLARE i INT;
+DECLARE coun int;
+DECLARE mob VARCHAR(1000);
+DECLARE msg VARCHAR(1000);
+
+set i=0;
+SET coun=(select count(*)from (select v.mobile,group_concat(v.name separator ', ') as rt from 
+(select mobile,name from temp_main_db join crops on `crops`.reg_code=`temp_main_db`.reg_code)
+ as v group by mobile) as r);
+
+while i<coun
+do
+set mob=	
+(select v.mobile from 
+(select mobile,name from temp_main_db join crops on `crops`.reg_code=`temp_main_db`.reg_code)
+ as v group by mobile limit 1 offset i);  
+SET NAMES UTF8;
+set msg=
+(select group_concat(v.name separator ', ') as rt from 
+(select mobile,name from temp_main_db join crops on `crops`.reg_code=`temp_main_db`.reg_code)
+ as v group by mobile limit 1 offset i);  
+
+INSERT INTO `messageout`(`MessageTo`, `MessageFrom`, `MessageText`)
+ VALUES (mob,"+919624122862",msg);
+ 
+set i=i+1;
+END while;
+END$$
+
+DELIMITER ;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
